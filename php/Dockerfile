@@ -1,7 +1,8 @@
 ARG VERSION
+# FROM php:7.2-fpm
 FROM php:${VERSION}-fpm
 
-LABEL maintainer="ogenes.yi@gmail.com"
+LABEL maintainer="ChanYu"
 
 # 复制时区配置
 ENV TZ=Asia/Shanghai
@@ -63,6 +64,13 @@ RUN docker-php-ext-configure bcmath --enable-bcmath \
   && docker-php-ext-install opcache \
   && docker-php-ext-enable opcache
 
+# 安装mcrypt
+RUN pecl install mcrypt && docker-php-ext-enable mcrypt
+# 安装mongodb
+RUN pecl install mongodb && docker-php-ext-enable mongodb
+# 安装swoole
+RUN pecl install swoole && docker-php-ext-enable swoole
+
 ARG VERSION
 RUN if [ "$VERSION" = "7.1" ] || [ "$VERSION" = "7.2" ] || [ "$VERSION" = "7.3" ]; then \
     docker-php-ext-configure gd --with-jpeg-dir=/usr/lib --with-freetype-dir=/usr/include/freetype2 \
@@ -72,7 +80,7 @@ elif [ "$VERSION" = "7.4" ] || [ "$VERSION" = "8.0" ]; then \
     && docker-php-ext-install gd; \
 fi
 
-# 安装 Redis 扩展
+# 安装 Redis mongodb xdebug 等PHP扩展
 RUN pecl install -o -f redis \
   && rm -rf /tmp/pear \
   && docker-php-ext-enable redis
