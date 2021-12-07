@@ -1,7 +1,7 @@
 ARG MONGO_VERSION
 FROM mongo:${MONGO_VERSION}
 
-LABEL maintainer="ogenes.yi@gmail.com"
+LABEL maintainer="ChanYu"
 
 # 复制时区配置
 ENV TZ=Asia/Shanghai
