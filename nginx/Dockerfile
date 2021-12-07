@@ -1,6 +1,6 @@
 FROM nginx:1.14
 
-LABEL maintainer="ogenes.yi@gmail.com"
+LABEL maintainer="ChanYu"
 
 # 复制时区配置
 ENV TZ=Asia/Shanghai
