@@ -65,11 +65,11 @@
             index.php
 ```
 
-### 一. [install docker](https://github.com/ogenes/docker-lnmp/wiki/Docker-%E7%AE%80%E4%BB%8B%E5%8F%8A%E5%AE%89%E8%A3%85)
+### 一. [install docker](https://www.docker.com/get-started)
 
 ```
 $ docker -v
-Docker version 19.03.8, build afacb8b
+Docker version 20.10.7, build f0df350
 
 $ docker-compose -v
 docker-compose version 1.25.5, build 8a1c60f6
@@ -77,10 +77,9 @@ docker-compose version 1.25.5, build 8a1c60f6
 ```
 
 ### 二. download
-```$xslt
-$ pwd
-/d/app
-$ git clone https://github.com/ogenes/docker-lnmp.git
+```
+# 进入到相应的目录
+$ git clone https://github.com/jiuyoulingzhu/docker-lnmp.git
 ```
 ### 三. init
 ```shell script
@@ -93,10 +92,6 @@ $ cp .env.example .env
 $ docker-compose up -d nginx
 $ docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-ba864491ac22        docker-lnmp_mysql   "docker-entrypoint.s…"   22 minutes ago      Up 6 seconds        0.0.0.0:3306->3306/tcp, 33060/tcp          mysql
-68ca3dcdf667        docker-lnmp_nginx   "nginx -g 'daemon of…"   42 minutes ago      Up 3 seconds        0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginx
-9e46003ebe39        docker-lnmp_php     "docker-php-entrypoi…"   42 minutes ago      Up 4 seconds        0.0.0.0:9000->9000/tcp                     php
-e1c96bbea465        docker-lnmp_redis   "docker-entrypoint.s…"   51 minutes ago      Up 5 seconds        0.0.0.0:6379->6379/tcp                     redis
 ```
 
 ### 五. test
@@ -108,9 +103,6 @@ $ docker-compose restart nginx
 127.0.0.1 default.dev.com
 
 ```
-访问 http://default.dev.com/ 得到响应 Hello Ogenes! 表示运行成功。
-
-![QQ截图20210114105752.png](https://i.loli.net/2021/01/14/NPTJhEgcszFZaOp.png)
 
 ### 五. note
     默认版本为：
